@@ -1,11 +1,20 @@
 import React from "react";
 
-function App() {
-  return (
-    <div className="app">
-      <h1>Hello World!</h1>
-    </div>
-  );
-}
+
+import HomePage from './components/HomePage';
+import AnalyticsDashboard from './components/AnalyticsDashboard';
+import UserProfile from './components/UserProfile';
+import InfrastructureAnalysis from "./components/InfrastructureAnalysis";
+import PropertyDetailView from "./components/PropertyDetailView";
+
+
+const App = () => {
+    return (
+        <div>
+            <HomePage/>
+            {/* Add routes or navigation as needed */}
+        </div>
+    );
+};
 
 export default App;
