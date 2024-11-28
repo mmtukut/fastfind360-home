@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import MapComponent from './MapComponent';
 import { 
   Heart, Share2, MapPin, Bed, Bath, Square, School, 
   Hospital, Bus, ShoppingCart, Phone, Mail, User, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import image1 from '../assets/images/property1.jpg';
+import image2 from '../assets/images/property2.jpg';
+import image3 from '../assets/images/property3.jpg';
 
 const PropertyDetailView = () => {
   const [showContactModal, setShowContactModal] = useState(false);
@@ -35,21 +39,21 @@ const PropertyDetailView = () => {
       title: "Similar Luxury Apartment",
       price: "₦72,000,000",
       location: "Lekki Phase 1",
-      image: "/api/placeholder/300/200"
+      image: image1
     },
     {
       id: 2,
       title: "Comparable Property",
       price: "₦78,000,000",
       location: "Lekki Phase 1",
-      image: "/api/placeholder/300/200"
+      image: image2
     },
     {
       id: 3,
       title: "Similar Layout Home",
       price: "₦70,000,000",
       location: "Lekki Phase 1",
-      image: "/api/placeholder/300/200"
+      image: image3
     }
   ];
 
@@ -58,7 +62,7 @@ const PropertyDetailView = () => {
       {/* Property Images/360 Tour Section */}
       <div className="relative h-[70vh] bg-gray-100">
         <img 
-          src="/api/placeholder/1200/800" 
+          src="../assets/images/properties.jpg" 
           alt="Property View" 
           className="w-full h-full object-cover"
         />
@@ -213,12 +217,29 @@ const PropertyDetailView = () => {
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-bold mb-4">Nearby Infrastructure</h2>
               <div className="h-64 bg-gray-100 rounded-lg mb-4">
-                {/* Map placeholder */}
-                <img 
-                  src="/api/placeholder/400/300" 
-                  alt="Map"
-                  className="w-full h-full object-cover rounded-lg"
-                />
+
+              <div className="mt-8">
+  <h3 className="text-xl font-bold mb-4">Nearby Infrastructure</h3>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {nearbyInfrastructure.map((infra, index) => (
+      <div key={index} className="bg-white rounded-lg shadow p-4 flex items-center space-x-4">
+        {/* Static Map Image */}
+        <img
+          src={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff0000(${infra.coordinates?.[0]},${infra.coordinates?.[1]})/${infra.coordinates?.[0]},${infra.coordinates?.[1]},14,0,0/200x200@2x?access_token=your-mapbox-access-token`}
+          alt={`Map showing ${infra.name}`}
+          className="w-20 h-20 rounded-lg object-cover"
+        />
+        {/* Infrastructure Details */}
+        <div>
+          <h4 className="text-lg font-semibold">{infra.name || "Unknown Name"}</h4>
+          <p className="text-sm text-gray-600">{infra.type || "Unknown Type"}</p>
+          <p className="text-sm text-gray-400">{infra.distance || "N/A"}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
               </div>
               <div className="space-y-3">
                 {nearbyInfrastructure.map((item, index) => (

@@ -12,6 +12,7 @@ const App = () => {
     return (
         <div>
             <HomePage/>
+            <PropertyDetailView/>
             {/* Add routes or navigation as needed */}
         </div>
     );
