@@ -3,7 +3,7 @@ import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibW10dWt1ciIsImEiOiJjbTEyZGk2dmwwbjZyMmtzMXFzb3V0cHRuIn0.pDgNHWd_o6u2NKVFib0EPQ';
 
-const MapComponent = ({ coordinates = [0, 0], listings = [], onMarkerClick }) => {
+const MapComponent = ({ coordinates = [7.492, 9.057], listings = [], onMarkerClick }) => {
   const mapContainer = useRef(null);
 
   useEffect(() => {
